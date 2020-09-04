@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using CoffeeShop.Models;
 using System.Web.Mvc;
+using CoffeeShop.ViewModel;
+using System.Collections.Generic;
+
 
 namespace CoffeeShop.Controllers
 {
     public class HomeController : Controller
     {
+        //List<Order> Orders = new List<Order>();
+
         public ActionResult Index()
         {
             return View();
@@ -20,9 +22,9 @@ namespace CoffeeShop.Controllers
 
         public static bool ValidatePassword(string pass)
         {
-            foreach(char let in pass)
+            foreach (char let in pass)
             {
-                if(let == '1' || let == '2' || let == '3' || let == '4' || let == '5' || let == '6' || let == '7' || let == '8' || let == '9' || let == '0')
+                if (let == '1' || let == '2' || let == '3' || let == '4' || let == '5' || let == '6' || let == '7' || let == '8' || let == '9' || let == '0')
                 {
                     return true;
                 }
@@ -56,7 +58,24 @@ namespace CoffeeShop.Controllers
                 //return Content($"The passwords do not match");
             }
 
-            return View();
+            WebUser currentUser = new WebUser
+            {
+                Name = $"{firstName} {lastName}",
+                Email = eMail,
+                Phone = phone,
+                Pass = pass1,
+            };
+
+            var viewModel = new Order
+            {
+                Person = currentUser,
+                ID = Order.Orders.Count,
+                Stuff = new List<Item>(),
+                Delivery = false,
+            };
+            Order.Orders.Add(viewModel);
+            
+            return View(viewModel);
         }
 
         public ActionResult PassNoMatch()
@@ -76,6 +95,19 @@ namespace CoffeeShop.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult AddItem(string DSelect, string Size, int orderNumber)
+        {
+            var viewModel = new Item 
+            { 
+                Size = Size, 
+                Drink = DSelect 
+            };
+
+            //Orders[orderNumber].Stuff.Add(viewModel);
+            
+            return Content($"{Size} {DSelect} {Order.Orders[0].ID}");
         }
     }
 }

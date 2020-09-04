@@ -1,8 +1,34 @@
-﻿
+﻿@model CoffeeShop.ViewModel.Order
+
 @{
     ViewBag.Title = "NewUser";
 }
 
-<h2>NewUser</h2>
-<p>Thank you @ViewBag.Name your e-mail @ViewBag.eMail has been registered</p>
+<br /><p>Welcome @Model.Person.Name your order number is: @Model.ID</p>
+<h2>Place an Order</h2>
+<br />
+<form method="post" action="/Home/AddItem">
+    Your order number is:
+    <input type="range" id="OrderNumber" name="OrderNumber" min="@Model.ID" max="@Model.ID" />
+
+    <h4>Drink Selection: </h4>
+    <input type="radio" id="espresso" name="DSelect" value="espresso" />
+    <label for="espresso">Espresso</label><br />
+    <input type="radio" id="DarkRoastCoffee" name="DSelect" value="Dark Roast Coffee" />
+    <label for="Dark Roast Coffee">Dark Roast Cofee</label><br />
+    <input type="radio" id="Cappuccino" name="DSelect" value="Cappuccino" />
+    <label for="Cappuccino">Cappuccino</label><br />
+
+    <br />
+    <h4>Drink Size: </h4>
+    <input type="radio" id="Large" name="Size" value="Large" />
+    <label for="Large">Large</label>
+    <input type="radio" id="Medium" name="Size" value="Medium" />
+    <label for="Medium">Medium</label>
+    <input type="radio" id="Small" name="Size" value="Small" />
+    <label for="Small">Small</label>
+    <br /><br />
+    <input type="submit" value="Add Item" />
+</form>
+
 

@@ -8,6 +8,6 @@ namespace CoffeeShop.Models
     public class Item
     {
         public string Drink { get; set; }
-        public string Siza { get; set; }
+        public string Size { get; set; }
     }
 }
