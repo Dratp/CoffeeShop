@@ -10,8 +10,10 @@ namespace CoffeeShop.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string Pass { get; set; } 
+        public string Pass { get; set; }
+        public int ID { get; set; }
 
+        public static List<WebUser> Users = new List<WebUser>();
 
     }
 }

@@ -1,34 +1,18 @@
-﻿@model CoffeeShop.ViewModel.Order
+﻿@model CoffeeShop.Models.WebUser
 
 @{
     ViewBag.Title = "NewUser";
 }
 
-<br /><p>Welcome @Model.Person.Name your order number is: @Model.ID</p>
-<h2>Place an Order</h2>
+<br /><p>Welcome @Model.Name your user ID is: @Model.ID</p>
+<p>Would you like to place an order</p>
 <br />
-<form method="post" action="/Home/AddItem">
-    Your order number is:
-    <input type="range" id="OrderNumber" name="OrderNumber" min="@Model.ID" max="@Model.ID" />
-
-    <h4>Drink Selection: </h4>
-    <input type="radio" id="espresso" name="DSelect" value="espresso" />
-    <label for="espresso">Espresso</label><br />
-    <input type="radio" id="DarkRoastCoffee" name="DSelect" value="Dark Roast Coffee" />
-    <label for="Dark Roast Coffee">Dark Roast Cofee</label><br />
-    <input type="radio" id="Cappuccino" name="DSelect" value="Cappuccino" />
-    <label for="Cappuccino">Cappuccino</label><br />
-
-    <br />
-    <h4>Drink Size: </h4>
-    <input type="radio" id="Large" name="Size" value="Large" />
-    <label for="Large">Large</label>
-    <input type="radio" id="Medium" name="Size" value="Medium" />
-    <label for="Medium">Medium</label>
-    <input type="radio" id="Small" name="Size" value="Small" />
-    <label for="Small">Small</label>
-    <br /><br />
-    <input type="submit" value="Add Item" />
+<form method="post" action="/Home/WebOrder">
+    <input type="range" id="id" name="id" min="@Model.ID" max="@Model.ID" />
+    <input type="submit" value="Yes">
+</form>
+<form method="post" action="/Home/GoodBye">
+    <input type="submit" value="No">
 </form>
 
 

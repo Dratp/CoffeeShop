@@ -1,0 +1,35 @@
+﻿@model CoffeeShop.ViewModel.Order
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2>Checkout</h2>
+<p>Thank you for your order @Model.Person.Name</p><br />
+<p>We will give you a call at @Model.Person.Phone if there are any iusses with yoru order</p><br />
+
+@if (Model.Delivery)
+{
+    <p>Your order will arrive at @Model.Time.AddMinutes(30)</p><br />
+}
+else
+{
+    <p>Your order will be ready for pickup at @Model.Time.AddMinutes(30)</p><br />
+}
+
+<p>Your current order is:</p>
+<ul>
+    @foreach (var thing in Model.Stuff)
+    {
+        <li>@thing.Size @thing.Drink</li>
+    }
+</ul>
+
+
+
+
+
+
+
+
+

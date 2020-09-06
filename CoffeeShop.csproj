@@ -168,6 +168,10 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\NewUser.cshtml" />
     <Content Include="Views\Home\PassNoMatch.cshtml" />
+    <Content Include="Views\Home\AddItem.cshtml" />
+    <Content Include="Views\Home\Another.cshtml" />
+    <Content Include="Views\Home\Delivery.cshtml" />
+    <Content Include="Views\Home\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

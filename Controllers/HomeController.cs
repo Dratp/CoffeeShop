@@ -58,24 +58,36 @@ namespace CoffeeShop.Controllers
                 //return Content($"The passwords do not match");
             }
 
-            WebUser currentUser = new WebUser
+            WebUser newUser = new WebUser
             {
                 Name = $"{firstName} {lastName}",
                 Email = eMail,
                 Phone = phone,
                 Pass = pass1,
+                ID = WebUser.Users.Count
             };
+
+            WebUser.Users.Add(newUser);
+            
+            return View(newUser);
+        }
+
+        public ActionResult WebOrder(string id)
+        {
+            int numid = int.Parse(id);
 
             var viewModel = new Order
             {
-                Person = currentUser,
+                Person = WebUser.Users[numid],
                 ID = Order.Orders.Count,
                 Stuff = new List<Item>(),
                 Delivery = false,
+                Time = System.DateTime.Now
             };
+
             Order.Orders.Add(viewModel);
-            
-            return View(viewModel);
+
+            return View("AddItem", viewModel);
         }
 
         public ActionResult PassNoMatch()
@@ -105,9 +117,36 @@ namespace CoffeeShop.Controllers
                 Drink = DSelect 
             };
 
-            //Orders[orderNumber].Stuff.Add(viewModel);
+            Order.Orders[orderNumber].Stuff.Add(viewModel);
             
-            return Content($"{Size} {DSelect} {Order.Orders[0].ID}");
+            return View("Another",Order.Orders[orderNumber]);
+        }
+
+        public ActionResult Another(int orderNumber)
+        {
+            //int numid = int.Parse(id);
+            return View("AddItem", Order.Orders[orderNumber]);
+        }
+
+        public ActionResult Delivery(int orderNumber)
+        {
+            return View(Order.Orders[orderNumber]);
+        }
+
+        public ActionResult Checkout(string Delivery, int orderNumber)
+        {
+            if (Delivery == "Delivery")
+            {
+                Order.Orders[orderNumber].Delivery = true;
+            }
+            else
+            {
+                Order.Orders[orderNumber].Delivery = false;
+            }
+            Order.Orders[orderNumber].Time = System.DateTime.Now;
+
+
+            return View(Order.Orders[orderNumber]);
         }
     }
 }

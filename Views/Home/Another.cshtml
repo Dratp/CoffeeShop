@@ -1,0 +1,25 @@
+﻿@model CoffeeShop.ViewModel.Order
+
+@{
+    ViewBag.Title = "Another";
+}
+
+<p>Order number @Model.ID</p>
+<h2>Would you like to order another item?</h2>
+<form method="post" action="/Home/Another">
+    <input type="range" id="OrderNumber" name="OrderNumber" min="@Model.ID" max="@Model.ID" />
+    <input type="submit" value="Yes">
+</form>
+<form method="post" action="/Home/Delivery">
+    <input type="range" id="OrderNumber" name="OrderNumber" min="@Model.ID" max="@Model.ID" />
+    <input type="submit" value="Check out">
+</form>
+
+<p>Your current order is:</p>
+<ul>
+    @foreach (var thing in Model.Stuff)
+    {
+        <li>@thing.Size @thing.Drink</li>
+    }
+</ul>
+
