@@ -148,5 +148,10 @@ namespace CoffeeShop.Controllers
 
             return View(Order.Orders[orderNumber]);
         }
+
+        public ActionResult Goodbye()
+        {
+            return View();
+        }
     }
 }
