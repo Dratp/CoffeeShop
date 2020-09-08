@@ -23,6 +23,26 @@ textarea {
     max-width: 280px;
 }
 
-body {
-    color: cyan;
+h2 {
+    color: #b8deb8;
 }
+
+h4 {
+    color: #5d9479;
+}
+table {
+    color: #4e43a1;
+}
+
+p {
+    color: #5d9479;
+}
+
+label {
+    color: #4e43a1;
+}
+
+li {
+    color: #c24f5d;
+}
+
