@@ -6,7 +6,7 @@
 
     <form method="post" action="/Home/AddItem">
         Your order number is: @Model.ID
-        <input type="range" id="OrderNumber" name="OrderNumber" min="@Model.ID" max="@Model.ID" />
+        <input type="hidden" id="OrderNumber" name="OrderNumber" value="@Model.ID" />
 
         <h4>Drink Selection: </h4>
         <input type="radio" id="espresso" name="DSelect" value="Espresso" />

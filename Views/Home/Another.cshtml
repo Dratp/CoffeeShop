@@ -7,11 +7,11 @@
 <p>Order number @Model.ID</p>
 <h2>Would you like to order another item?</h2>
 <form method="post" action="/Home/Another">
-    <input type="range" id="OrderNumber" name="OrderNumber" min="@Model.ID" max="@Model.ID" />
+    <input type="hidden" id="OrderNumber" name="OrderNumber" value="@Model.ID" />
     <input type="submit" value="Yes">
 </form>
 <form method="post" action="/Home/Delivery">
-    <input type="range" id="OrderNumber" name="OrderNumber" min="@Model.ID" max="@Model.ID" />
+    <input type="hidden" id="OrderNumber" name="OrderNumber" value="@Model.ID"  />
     <input type="submit" value="Check out">
 </form>
 

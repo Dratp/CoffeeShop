@@ -5,7 +5,7 @@
 
 <h2>Delivery?</h2>
 <form method="post" action="/Home/Checkout">
-    <input type="range" id="OrderNumber" name="OrderNumber" min="@Model.ID" max="@Model.ID" />
+    <input type="hidden" id="OrderNumber" name="OrderNumber" value="@Model.ID"  />
     <input type="radio" id="Delivery" name="Delivery" value="Delivery" />
     <label for="Delivery">Yes</label><br />
     <input type="radio" id="Pickup" name="Delivery" value="Pickup" />
